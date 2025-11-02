@@ -1,0 +1,80 @@
+body {
+    background-color: #0e0e10;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111827;
+}
+
+.navbar-brand {
+    color: #00bfff !important;
+    font-size: 1.3rem;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6, #9333ea);
+    height: 65vh;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #2563eb;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+/* Ofertas */
+.oferta-card {
+    background-color: #1f2937;
+    color: #fff;
+    border: 1px solid #374151;
+}
+.oferta-card img {
+    height: 200px;
+    object-fit: cover;
+}
+.oferta-card .btn {
+    background-color: #9333ea;
+    border: none;
+}
+.oferta-card .btn:hover {
+    background-color: #7e22ce;
+}
+h2 {
+    color: #00fff7; /* turquesa gamer */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+#generos {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-top: 3px solid #3b82f6;
+    border-bottom: 3px solid #9333ea;
+}
+
+.genero-btn {
+    background-color: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    transition: 0.3s;
+}
+
+.genero-btn:hover {
+    background-color: #9333ea;
+    transform: scale(1.05);
+}
+/* Footer */
+footer {
+    background-color: #111827;
+    font-size: 0.9rem;
+}
