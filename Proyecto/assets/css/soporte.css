@@ -1,0 +1,100 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2faff;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #111827;
+}
+
+.navbar-brand {
+    color: #00bfff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #e2e8f0 !important;
+}
+
+.nav-link:hover {
+    color: #00bfff !important;
+}
+
+.header {
+    background-color: #a0e9e3;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #000;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.faq-section,
+.contact-section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2,
+.contact-section h2 {
+    text-align: center;
+    color: #008b8b;
+}
+
+.faq-item {
+    margin-top: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+.faq-item h3 {
+    color: #007f80;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+input,
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #00b8a9;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #009b8a;
+}
+
+footer {
+    background-color: #a0e9e3;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
