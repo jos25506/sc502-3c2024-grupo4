@@ -1,0 +1,73 @@
+body {
+    background-color: #0b0c10;
+    color: #e0e0e0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(90deg, rgba(10, 10, 10, 1) 0%, rgba(25, 25, 25, 1) 100%);
+    border-bottom: 2px solid #0dcaf0;
+}
+
+.hero h1 {
+    color: #0dcaf0;
+}
+
+.hero p {
+    color: #adb5bd;
+}
+
+/* Cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    background-color: #1c1c1c;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(13, 202, 240, 0.3);
+}
+
+.card img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+/* Botones */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    border-top: 2px solid #0dcaf0;
+    background-color: #111;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
