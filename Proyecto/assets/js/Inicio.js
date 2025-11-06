@@ -24,3 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Función para alerta al agregar al carrito
+function agregarCarrito(nombre) {
+    Swal.fire({
+        title: "¡Agregado al carrito!",
+        text: `${nombre} se añadió correctamente.`,
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false
+    });
+    window.location.href = "carrito.html?item=" + encodeURIComponent(nombre);
+}

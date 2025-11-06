@@ -59,4 +59,5 @@ function agregarCarrito(nombre) {
     timer: 1500,
     showConfirmButton: false
   });
+  window.location.href = "carrito.html?item=" + encodeURIComponent(nombre);
 }
