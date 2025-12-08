@@ -1,0 +1,91 @@
+/* Body */
+body {
+    background-color: #0e0e10;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111827;
+}
+
+.navbar-brand {
+    color: #00bfff !important;
+    font-size: 1.3rem;
+}
+
+/* Perfil Card */
+.perfil-card {
+    background-color: #1f2937;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+}
+
+.perfil-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.perfil-header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2563eb; /* azul gamer */
+}
+
+.perfil-header h2 {
+    margin-top: 15px;
+    color: #00fff7; /* turquesa gamer */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.perfil-header .badge {
+    background-color: #9333ea; /* morado gamer */
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+    border-radius: 12px;
+}
+
+/* Información de cuenta */
+h5 {
+    color: #00bfff;
+    font-weight: 600;
+}
+
+p strong {
+    color: #fff;
+}
+
+/* Botones */
+.btn-outline-primary {
+    color: #00bfff;
+    border-color: #00bfff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #00bfff;
+    color: #111827;
+    border-color: #00bfff;
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+/* Contenedor */
+.container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
