@@ -11,27 +11,7 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">GameMasters</a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cuenta.html">Cuenta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="soporte.html">Soporte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sobrenosotros.html">Sobre Nosotros</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'php/componentes/navbar.php'?>
 
     <section class="hero">
         <h1>Conoce a GameMasters</h1>
