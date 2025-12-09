@@ -24,16 +24,16 @@
 
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cuenta.html">Cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
                     <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
                     <li class="nav-item"><a class="nav-link" href="soporte.html">Soporte</a></li>
                     <li class="nav-item"><a class="nav-link" href="sobrenosotros.html">Sobre Nosotros</a></li>
                 </ul>
             </div>
-
+        </div>
     </nav>
 
     <!-- BANNER PRINCIPAL -->
@@ -50,19 +50,26 @@
             <div class="col-md-6">
                 <div class="login-card">
                     <h2 class="mb-4 text-center">Iniciar Sesión</h2>
-                    <form id="loginForm">
+
+                    <!-- FORMULARIO LOGIN -->
+                    <form id="loginForm" action="javascript:void(0)">
+
                         <div class="mb-3">
-                            <label for="logEmail" class="form-label">Correo Electrónico</label>
-                            <input type="logEmail" class="form-control" id="logEmail" required>
+                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correo" name="correo" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="logPassword" class="form-label">Contraseña</label>
-                            <input type="logPassword" class="form-control" id="logPassword" required>
+                            <label for="contrasena" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
                         </div>
+
                         <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
                     </form>
-                    <p class="text-center">¿No tienes una cuenta? <a href="#"
-                            onclick="cambiarFormulario()">Regístrate</a></p>
+
+                    <p class="text-center">¿No tienes una cuenta?
+                        <a href="#" onclick="cambiarFormulario()">Regístrate</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -74,36 +81,41 @@
             <div class="col-md-6">
                 <div class="login-card">
                     <h2 class="mb-4 text-center">¿No tienes una cuenta? Regístrate</h2>
-                    <form id="registerForm">
+
+                    <form id="registerForm" method="POST" action="backend/registrar.php">
                         <div class="mb-3">
                             <label for="regEmail" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="regEmail" required>
+                            <input type="email" class="form-control" id="regEmail" name="correo" required>
                         </div>
                         <div class="mb-3">
                             <label for="regPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="regPassword" required>
+                            <input type="password" class="form-control" id="regPassword" name="contrasena" required>
                         </div>
                         <div class="mb-3">
                             <label for="regConfirmPassword" class="form-label">Confirmar Contraseña</label>
-                            <input type="password" class="form-control" id="regConfirmPassword" required>
+                            <input type="password" class="form-control" id="regConfirmPassword" name="confirmar" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Registrarse</button>
                     </form>
-                    <p class="text-center">¿Ya tienes una cuenta? <a href="#"
-                            onclick="cambiarFormulario()">Inicia Sesión</a></p>
+
+                    <p class="text-center">¿Ya tienes una cuenta?
+                        <a href="#" onclick="cambiarFormulario()">Inicia Sesión</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-
 
     <footer class="text-center py-3 pastel-footer">
         <p class="mb-0">© 2025 GameMasters - Todos los derechos reservados 🎮</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/cuenta.js"></script>
+
+    <!-- AHORA LA RUTA ES LA CORRECTA -->
+    <script src="php/login/login.js"></script>
 
 </body>
 
 </html>
+
