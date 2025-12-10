@@ -1,0 +1,98 @@
+/* =============== ESTILO GENERAL =============== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #1f6feb;      /* mismo fondo gris gamer */
+  color: #e6edf3;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============== NAVBAR =============== */
+.navbar {
+  background: #161b22 !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  color: #3b82f6 !important;
+  font-size: 1.4rem;
+}
+
+.nav-link {
+  color: #c9d1d9 !important;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #3b82f6 !important;
+}
+
+/* =============== CONTENEDOR PRINCIPAL =============== */
+.historial-container {
+  padding: 40px;
+}
+
+/* Título */
+h2 {
+  color: #3b82f6;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* =============== TABLA =============== */
+.table-container {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(59,130,246,0.35);
+}
+
+table {
+  color: #e6edf3;
+}
+
+thead {
+  background: #1f6feb;
+}
+
+thead th {
+  color: #fff;
+  border-bottom: 2px solid #3b82f6;
+}
+
+tbody tr {
+  background: #0d1117;
+}
+
+tbody tr:nth-child(even) {
+  background: #161b22;
+}
+
+/* Botones de acción */
+.btn-estado {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.btn-estado:hover {
+  transform: scale(1.05);
+}
+
+/* Colores por estado */
+.pendiente { background: #facc15; color: #000; }
+.procesado { background: #3b82f6; }
+.pagado    { background: #22c55e; }
+.cancelado { background: #ef4444; }
+
+/* Footer */
+footer {
+  background: #161b22;
+  color: #8b949e;
+  padding: 15px;
+  text-align: center;
+  margin-top: 40px;
+}

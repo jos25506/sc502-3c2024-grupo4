@@ -23,14 +23,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = trim($_POST['descripcion'] ?? '');
     $precio = floatval($_POST['precio'] ?? 0);
     $stock = intval($_POST['stock'] ?? 0);
-    $categoria = intval($_POST['categoria_id'] ?? 0);
+
+    // Nuevo campo de tipo
+    $tipo_producto = $_POST['tipo_producto'] ?? '';
+
+    // categoría solo si es videojuego
+    $categoria = ($tipo_producto === "Videojuego")
+        ? intval($_POST['categoria_id'] ?? 0)
+        : null;
 
     // VALIDACIONES
     if ($nombre === '') $errors[] = "El nombre del producto es obligatorio";
     if (strlen($nombre) > 150) $errors[] = "El nombre no puede exceder 150 caracteres";
     if ($precio <= 0) $errors[] = "El precio debe ser mayor a 0";
     if ($stock < 0) $errors[] = "El stock no puede ser negativo";
-    if ($categoria <= 0) $errors[] = "Debe seleccionar una categoría válida";
+
+    if ($tipo_producto === '') {
+        $errors[] = "Debe seleccionar un tipo de producto";
+    }
+
+    if ($tipo_producto === "Videojuego" && $categoria <= 0) {
+        $errors[] = "Debe seleccionar una categoría válida para videojuegos";
+    }
 
     // IMAGEN (opcional)
     $uploadPath = null;
@@ -64,21 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // SI TODO BIEN → INSERTAR
     if (empty($errors)) {
 
-        $sql = "INSERT INTO productos (nombre_producto, descripcion, precio, stock, categoria_id, imagen)
-                VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO productos 
+                (nombre_producto, descripcion, precio, stock, categoria_id, imagen, tipo_producto)
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $mysqli->prepare($sql);
 
         if (!$stmt) {
             $errors[] = "Error preparar consulta: " . $mysqli->error;
         } else {
-            $stmt->bind_param("ssdiis", 
+            $stmt->bind_param("ssdiiss", 
                 $nombre, 
                 $descripcion, 
                 $precio, 
                 $stock, 
                 $categoria, 
-                $uploadPath
+                $uploadPath,
+                $tipo_producto
             );
 
             if ($stmt->execute()) {
@@ -138,8 +154,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="number" name="stock" class="form-control">
             </div>
 
+            <!-- SELECT TIPO -->
             <div class="mb-3">
-                <label class="form-label">Categoría</label>
+                <label class="form-label">Tipo de producto</label>
+                <select name="tipo_producto" id="tipo_producto" class="form-select">
+                    <option value="">-- Seleccione --</option>
+                    <option value="Consola">Consola</option>
+                    <option value="Accesorio">Accesorio</option>
+                    <option value="Videojuego">Videojuego</option>
+                </select>
+            </div>
+
+            <!-- SELECT CATEGORÍA SOLO PARA VIDEOJUEGO -->
+            <div class="mb-3" id="bloque_categorias" style="display:none;">
+                <label class="form-label">Categoría (solo videojuegos)</label>
                 <select name="categoria_id" class="form-select">
                     <option value="">-- Seleccione --</option>
                     <?php
@@ -168,6 +196,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
+<script>
+// Mostrar/ocultar categorías según tipo
+document.getElementById("tipo_producto").addEventListener("change", function() {
+    let tipo = this.value;
+    let categoriasBlock = document.getElementById("bloque_categorias");
+
+    if (tipo === "Videojuego") {
+        categoriasBlock.style.display = "block";
+    } else {
+        categoriasBlock.style.display = "none";
+        categoriasBlock.querySelector("select").value = "";
+    }
+});
+</script>
+
 </body>
 </html>
+
 

@@ -32,12 +32,18 @@ $recomendados = $mysqli->query("SELECT * FROM productos ORDER BY RAND() LIMIT 6"
 
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto">
+
                 <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="catalogo.php">Catálogo</a></li>
                 <li class="nav-item"><a class="nav-link" href="carrito.php">Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
                 <li class="nav-item"><a class="nav-link" href="soporte.php">Soporte</a></li>
                 <li class="nav-item"><a class="nav-link" href="sobrenosotros.php">Sobre Nosotros</a></li>
+
+                <!-- SOLO ADMIN lo abre -->
+                <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                    <li class="nav-item"><a class="nav-link" href="historial_compras.php">Historial de compras</a></li>
+                <?php endif; ?>
 
                 <?php if (isset($_SESSION['id_usuario'])): ?>
                 <li class="nav-item dropdown">
@@ -52,6 +58,7 @@ $recomendados = $mysqli->query("SELECT * FROM productos ORDER BY RAND() LIMIT 6"
                 <?php else: ?>
                 <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
                 <?php endif; ?>
+
             </ul>
         </div>
     </div>
