@@ -8,11 +8,9 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-// Si llega un ID desde el catálogo, agregar al carrito
+// Agregar producto desde index.php o catálogo
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
-
-    // Buscar producto en la BD
     $stmt = $mysqli->prepare("SELECT * FROM productos WHERE id_producto = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -20,12 +18,9 @@ if (isset($_GET['id'])) {
 
     if ($res->num_rows > 0) {
         $producto = $res->fetch_assoc();
-
-        // Si ya existe en el carrito, aumentar cantidad
         if (isset($_SESSION['carrito'][$id])) {
             $_SESSION['carrito'][$id]['cantidad']++;
         } else {
-            // Crear item en el carrito
             $_SESSION['carrito'][$id] = [
                 'id' => $producto['id_producto'],
                 'nombre' => $producto['nombre_producto'],
@@ -37,7 +32,16 @@ if (isset($_GET['id'])) {
     }
 }
 
-// Eliminar un producto del carrito
+// Editar cantidad desde formulario
+if (isset($_POST['editar'])) {
+    $id = intval($_POST['id']);
+    $cantidad = intval($_POST['cantidad']);
+    if ($cantidad > 0 && isset($_SESSION['carrito'][$id])) {
+        $_SESSION['carrito'][$id]['cantidad'] = $cantidad;
+    }
+}
+
+// Eliminar un producto
 if (isset($_GET['eliminar'])) {
     $idEliminar = intval($_GET['eliminar']);
     unset($_SESSION['carrito'][$idEliminar]);
@@ -58,8 +62,8 @@ cerrarConexion($mysqli);
     <title>🛒 Carrito de Compras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/carrito.css">
+    
 </head>
-
 <body class="bg-light">
 
 <!-- NAVBAR -->
@@ -69,14 +73,11 @@ cerrarConexion($mysqli);
             <img src="Imagenes/logo.jpg" alt="Logo" width="40" class="me-2">
             GameMasters
         </a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="catalogo.php">Catálogo</a></li>
                 <li class="nav-item"><a class="nav-link active" href="carrito.php">Carrito</a></li>
@@ -89,39 +90,28 @@ cerrarConexion($mysqli);
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <?= htmlspecialchars($_SESSION['nombre']); ?>
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
                             <li><a class="dropdown-item" href="php/login/logout.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
-
                 <?php else: ?>
-
                     <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
-
                 <?php endif; ?>
-
             </ul>
         </div>
     </div>
 </nav>
 
-
-
 <div class="container my-5">
-
     <h2 class="fw-bold mb-4">🛒 Tu Carrito</h2>
 
     <?php if (empty($_SESSION['carrito'])): ?>
-
         <div class="alert alert-info text-center">
             Tu carrito está vacío.  
             <a href="catalogo.php">Ir al catálogo</a>
         </div>
-
     <?php else: ?>
-
         <table class="table table-bordered align-middle text-center">
             <thead class="table-dark">
                 <tr>
@@ -133,7 +123,6 @@ cerrarConexion($mysqli);
                     <th>Acciones</th>
                 </tr>
             </thead>
-
             <tbody>
                 <?php
                 $total = 0;
@@ -145,11 +134,16 @@ cerrarConexion($mysqli);
                     <td><img src="<?= $item['imagen'] ?>" width="70"></td>
                     <td><?= htmlspecialchars($item['nombre']) ?></td>
                     <td>₡<?= number_format($item['precio'], 2) ?></td>
-                    <td><?= $item['cantidad'] ?></td>
+                    <td>
+                        <form method="POST" class="d-flex justify-content-center align-items-center gap-2">
+                            <input type="number" name="cantidad" value="<?= $item['cantidad'] ?>" min="1" class="form-control form-control-sm" style="width:70px">
+                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                            <button type="submit" name="editar" class="btn btn-primary btn-sm editar-cantidad">Actualizar</button>
+                        </form>
+                    </td>
                     <td>₡<?= number_format($subtotal, 2) ?></td>
                     <td>
-                        <a href="carrito.php?eliminar=<?= $item['id'] ?>" 
-                           class="btn btn-danger btn-sm">Eliminar</a>
+                        <a href="carrito.php?eliminar=<?= $item['id'] ?>" class="btn btn-danger btn-sm eliminar-item">Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -158,21 +152,22 @@ cerrarConexion($mysqli);
 
         <div class="d-flex justify-content-between mt-4">
             <h3>Total: ₡<?= number_format($total, 2) ?></h3>
-
             <div>
                 <a href="catalogo.php" class="btn btn-primary">Volver a comprar</a>
-
-                <a href="#" class="btn btn-success">Finalizar Compra</a>
+                <a href="#" class="btn btn-success finalizar-compra">Finalizar Compra</a>
             </div>
         </div>
-
     <?php endif; ?>
-
 </div>
 
 <footer class="text-center py-3 bg-dark text-white">
     © 2025 GameMasters - Todos los derechos reservados 🎮
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/carrito.js"></script>
 </body>
 </html>
+
+
