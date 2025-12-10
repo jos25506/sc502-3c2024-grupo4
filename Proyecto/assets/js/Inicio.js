@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Mensaje de bienvenida
+    // SweetAlert bienvenida
     Swal.fire({
         title: "🎮 Bienvenido a GameMasters",
         text: "Explora las mejores promociones y videojuegos del momento.",
@@ -8,19 +8,30 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmButtonText: "Empezar"
     });
 
-    // Funcionalidad de botones de género
-    const botonesGenero = document.querySelectorAll(".genero-btn");
 
-    botonesGenero.forEach(boton => {
-        boton.addEventListener("click", () => {
-            const genero = boton.dataset.genero;
+
+
+    // Botones Agregar al carrito
+    const botonesAgregar = document.querySelectorAll(".agregar-carrito");
+    botonesAgregar.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // Evita redirigir de inmediato
+
+            const nombre = btn.dataset.nombre;
+            const id = btn.dataset.id;
+
             Swal.fire({
-                title: `🎮 Género: ${genero}`,
-                text: `Estás explorando los mejores juegos de ${genero}.`,
                 icon: "success",
-                confirmButtonColor: "#9333ea",
-                confirmButtonText: "Ver más"
+                title: "Producto agregado",
+                text: `${nombre} se agregó al carrito`,
+                showConfirmButton: false,
+                timer: 1200
+            }).then(() => {
+                // Redirige al carrito después de que cierre la alerta
+                window.location.href = `carrito.php?id=${id}`;
             });
         });
     });
 });
+
+
