@@ -53,4 +53,54 @@ function mostrarItems() {
         carrito.appendChild(item);
     }
 
+
+    const botonesEditar = document.querySelectorAll(".editar-cantidad");
+    botonesEditar.forEach(btn=>{
+        btn.addEventListener("click",()=>{
+            Swal.fire({
+                icon:"success",
+                title:"Cantidad actualizada",
+                showConfirmButton:false,
+                timer:1200
+            });
+        });
+    });
+
+    // Vaciar carrito
+    const vaciar = document.querySelector("#vaciar-carrito");
+    if(vaciar){
+        vaciar.addEventListener("click",(e)=>{
+            e.preventDefault();
+            Swal.fire({
+                title:"¿Vaciar carrito?",
+                icon:"warning",
+                showCancelButton:true,
+                confirmButtonColor:"#3085d6",
+                cancelButtonColor:"#d33",
+                confirmButtonText:"Sí, vaciar"
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    window.location.href="carrito.php?vaciar=1";
+                }
+            });
+        });
+    }
+
+    // Finalizar compra
+    const finalizar = document.querySelector("#finalizar-compra");
+    if(finalizar){
+        finalizar.addEventListener("click",(e)=>{
+            e.preventDefault();
+            Swal.fire({
+                icon:"success",
+                title:"Compra realizada",
+                text:"Gracias por tu compra",
+                showConfirmButton:false,
+                timer:1500
+            }).then(()=>{
+                window.location.href="carrito.php?vaciar=1";
+            });
+        });
+    }
+
 }

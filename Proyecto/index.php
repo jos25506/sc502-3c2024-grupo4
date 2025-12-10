@@ -26,7 +26,6 @@ $recomendados = $mysqli->query("SELECT * FROM productos ORDER BY RAND() LIMIT 6"
         <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
             <img src="Imagenes/logo.jpg" alt="Logo" width="40" class="me-2">GameMasters
         </a>
-
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,17 +46,17 @@ $recomendados = $mysqli->query("SELECT * FROM productos ORDER BY RAND() LIMIT 6"
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['id_usuario'])): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <?= htmlspecialchars($_SESSION['nombre']) ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="php/login/logout.php">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <?= htmlspecialchars($_SESSION['nombre']) ?>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="php/login/logout.php">Cerrar sesión</a></li>
+                    </ul>
+                </li>
                 <?php else: ?>
-                    <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
+                <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
                 <?php endif; ?>
 
             </ul>
