@@ -3,7 +3,21 @@ body {
     color: #e0e0e0;
     font-family: "Segoe UI", Arial, sans-serif;
 }
-
+        /* Navbar */
+        .navbar {
+            background-color: #111827;
+        }
+        .navbar-brand {
+            color: #00bfff !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            color: #e2e8f0 !important;
+        }
+        .nav-link:hover {
+            color: #00bfff !important;
+        }
 /* Hero */
 .hero {
     background: linear-gradient(90deg, rgba(10, 10, 10, 1) 0%, rgba(25, 25, 25, 1) 100%);
