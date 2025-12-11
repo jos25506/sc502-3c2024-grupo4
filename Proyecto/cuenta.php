@@ -25,12 +25,12 @@
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="soporte.html">Soporte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sobrenosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo.php">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrito.php">Carrito</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="soporte.php">Soporte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobrenosotros.php">Sobre Nosotros</a></li>
                 </ul>
             </div>
         </div>
@@ -56,12 +56,12 @@
 
                         <div class="mb-3">
                             <label for="correo" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="correo" name="correo" required>
+                            <input type="email" class="form-control" id="correo" name="correo">
                         </div>
 
                         <div class="mb-3">
                             <label for="contrasena" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
@@ -80,8 +80,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
-    <!-- AHORA LA RUTA ES LA CORRECTA -->
+    
     <script src="php/login/login.js"></script>
 
 </body>
