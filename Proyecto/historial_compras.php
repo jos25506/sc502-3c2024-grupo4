@@ -73,18 +73,23 @@ $pedidos = $mysqli->query("
                 <li class="nav-item"><a class="nav-link" href="soporte.php">Soporte</a></li>
                 <li class="nav-item"><a class="nav-link" href="sobrenosotros.php">Sobre Nosotros</a></li>
 
+                <!-- SOLO ADMIN lo abre -->
+                <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin'): ?>
+                    <li class="nav-item"><a class="nav-link" href="historial_compras.php">Historial de compras</a></li>
+                <?php endif; ?>
+
                 <?php if (isset($_SESSION['id_usuario'])): ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <?= htmlspecialchars($_SESSION['nombre']) ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="php/login/logout.php">Cerrar sesión</a></li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <?= htmlspecialchars($_SESSION['nombre']) ?>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="php/login/logout.php">Cerrar sesión</a></li>
+                    </ul>
+                </li>
                 <?php else: ?>
-                    <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
+                <li class="nav-item"><a class="nav-link" href="cuenta.php">Cuenta</a></li>
                 <?php endif; ?>
 
             </ul>

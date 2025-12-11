@@ -4,7 +4,7 @@ function abrirConexion(){
 
     $host = "127.0.0.1";
     $user = "root";
-    $password = "root";
+    $password = "12345678";
     $db = "gamemasters";
 
     $mysqli = new mysqli($host, $user, $password, $db);
